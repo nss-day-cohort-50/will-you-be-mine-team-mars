@@ -39,25 +39,17 @@ export const Governors = () => {
     let html = `<select name="governor"><option value="0">Please select a governor...</option>`
 
     const listItemsArray = governors.map(governor => {
-        // if (governor.active === true) {
-        //     return `<option input type="checkbox" name="governor" value=${governor.id}/> ${governor.name}
-        // </option>`
-        // } else {
-        //     return `<option input type="checkbox" disabled="true" name="governor" value=${governor.id}/> ${governor.name}
-        //     </option>`
-        // }             
-        
-        if (governor.active === true) {
-            {
-            return `<option value=${governor.id}> ${governor.name}
-            </option>`}
-        } else 
-        if (governor.id === order.chosenGovernor){
-            return `<option value=${governor.id} selected> ${governor.name}
-            </option>`
+
+        if (governor.active === true && governor.id === order.chosenGovernor) {
+            return `<option value=${governor.id} selected> ${governor.name}</option>`}
+             else if(governor.active === true) {
+                return `<option value=${governor.id}> ${governor.name}</option>`
+            } else {
+                return `<option value=${governor.id} disabled> ${governor.name}</option>`
+            }
         } 
         
-    })
+    )
     html += listItemsArray.join("")
     html += "</select>"
     return html
