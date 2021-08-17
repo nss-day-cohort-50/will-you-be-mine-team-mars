@@ -15,22 +15,17 @@ document.addEventListener(
 
 
 export const facilityMineral = () => {
+    const order = getOrderBuilder()
     let html = "<ul>"
     const facMinerals = getFacilityMinerals()
     
-    const minerals = facMinerals.filter(facMineral => facMineral.facilityId === order.selectedFacility)
+    const facilityMinerals = facMinerals.filter(facMineral => facMineral.facilityId === order.facilityId)
 
-    const listItems = minerals.map(mineral => {
-        if (minerals.mineralId === minerals.id) {
-        return `<ul>
-            <input type="radio" name="mineral" value="${minerals.quantityAvailable}" /> ${mineral.type}
-        </ul>`
-        } else 
-        if (minerals.mineralId !== minerals.id) {
-        return `<ul>
-            <input type="radio" name="mineral" disabled="true" value="${minerals.quantityAvailable}" /> ${mineral.type}
-        </ul>` 
-        }
+    const listItems = facilityMinerals.map(mineral => {
+        const foundMineral = minerals.find((foundMineral)=> foundMineral.id === mineral.mineralId) 
+        return `
+        <input type="radio" name="mineral" value="${mineral.quantityAvailable}" /> ${foundMineral.type}
+    `
     })
 
     html += listItems.join("")
