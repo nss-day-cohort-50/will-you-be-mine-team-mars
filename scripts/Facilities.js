@@ -25,7 +25,7 @@ export const Facilities = () => {
     const listItemsArray = facilities.map(facility => {
         if (order.chosenGovernor > 0) {
             return `<div class = "facility options">
-            <button name="facility"> ${facility.name}</div> `
+            <button name="facility" value="${facility.id}">  ${facility.name}</div> `
         } 
         else {
             return `<div class = "facility options">
