@@ -1,7 +1,7 @@
 import { getGovernors, getOrderBuilder, setGovernor } from "./database.js"
 
 
-const governor = getGovernors()
+const governors = getGovernors()
 
 
 document.addEventListener(
@@ -38,7 +38,7 @@ export const Governors = () => {
     
     let html = `<select name="governor"><option value="0">Please select a governor...</option>`
 
-    const listItemsArray = governor.map(governor => {
+    const listItemsArray = governors.map(governor => {
         // if (governor.active === true) {
         //     return `<option input type="checkbox" name="governor" value=${governor.id}/> ${governor.name}
         // </option>`
@@ -49,11 +49,11 @@ export const Governors = () => {
         
         if (governor.active === true) {
             {
-            return `<option input type="checkbox" name="governor" value=${governor.id}/> ${governor.name}
+            return `<option value=${governor.id}> ${governor.name}
             </option>`}
         } else 
         if (governor.id === order.chosenGovernor){
-            return `<option input type="checkbox" disabled="true" name="governor" value=${governor.id}/> ${governor.name}
+            return `<option value=${governor.id} selected> ${governor.name}
             </option>`
         } 
         

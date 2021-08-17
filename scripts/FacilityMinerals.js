@@ -18,7 +18,7 @@ export const facilityMineral = () => {
     let html = "<ul>"
     const facMinerals = getFacilityMinerals()
     
-    const minerals = facMinerals.filter(mineral => mineral.id)
+    const minerals = facMinerals.filter(facMineral => facMineral.facilityId === order.selectedFacility)
 
     const listItems = minerals.map(mineral => {
         if (minerals.mineralId === minerals.id) {
